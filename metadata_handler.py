@@ -5,6 +5,7 @@ def isolate_metadata(commented_data):
     list_labels = []
     distance_source_detector = -1
     detector_offset = -1
+    number_of_bragg_edges = -1
     tmp_list_of_elements = []    
     list_of_elements = []
     
@@ -19,16 +20,20 @@ def isolate_metadata(commented_data):
                 if distance_source_detector == -1:
                     distance_source_detector = float(value)
             elif name == '# detector_offset (micros)':
-                if detector_offset -- -1:
+                if detector_offset == -1:
                     detector_offset = float(value)
+            elif name == '# number of bragg edges':
+                if number_of_bragg_edges == -1:
+                    number_of_bragg_edges = int(value)
             elif name == '# List of elements':
                 for _element in value.strip('\n').split(','):
-                    tmp_list_of_elements.append(_element)
+                    tmp_list_of_elements.append(_element.strip())
                 
-    list_of_elements = set(tmp_list_of_elements)
+    list_of_elements = list(set(tmp_list_of_elements))
 
     return (list_labels,
             distance_source_detector,
             detector_offset,
+            number_of_bragg_edges,
             list_of_elements)
     
