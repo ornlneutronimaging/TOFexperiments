@@ -20,13 +20,10 @@ def normalized_data_by_ob_file(data, mean_ob_data):
     I is the pixel value of the data
     I0 is the pixel value of the open beam
     '''
-    w.max = len(data)
-    display(w)
     
     normalized_data = []
     for _index, _data in enumerate(data):
         _normalized_data = (_data - mean_ob_data) / (mean_ob_data)
         normalized_data.append(_normalized_data)
-        w.value = _index
         
     return normalized_data
