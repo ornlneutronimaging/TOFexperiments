@@ -1,26 +1,27 @@
 from PyQt4 import QtCore, QtGui
+import os
+from decorators import format_directory
 
+
+@format_directory
 def gui_dname(dir=None):
     """Select files"""
-    if dir is None: 
-        dir ='./'
-    if dir is "":
-        dir = './'
-        
     dirname = QtGui.QFileDialog.getExistingDirectory(None, "Select Folder ...", 
                                             dir, 
                                             QtGui.QFileDialog.ShowDirsOnly)
     return dirname
 
+
+@format_directory
 def gui_fname(dir=None):
     """Select one or more file via a dialog and returns the file name.
     """
-    if dir is None: 
-        dir ='./'
     fname = QtGui.QFileDialog.getOpenFileNames(None, "Select file(s)...", 
-            dir, filter="Fits files(*.fits)")
+            directory = dir, filter="Fits files(*.fits);;TIFF files(*.tif)")
     return fname
 
+
+@format_directory
 def gui_single_file(dir=None):
     """Select one o file via a dialog and returns the file name.
     """
@@ -30,6 +31,8 @@ def gui_single_file(dir=None):
             dir, filter="Spectra File (*_Spectra.txt)")
     return fname
 
+
+@format_directory
 def gui_csv_fname(dir=None):
     """Select one or more file via a dialog and returns the file name.
     """
