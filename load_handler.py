@@ -10,7 +10,7 @@ def load_data(file_name):
     '''
     data_type = get_data_type(file_name)
     if data_type == '.fits':
-        hdulist = pyfits.open(_file)
+        hdulist = pyfits.open(file_name)
         hdu = hdulist[0]
         _image = np.asarray(hdu.data)
         return _image
